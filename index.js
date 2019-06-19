@@ -32,5 +32,13 @@ connection.query('SELECT * FROM users', function(err, data){
        res.send(users);
    })
 });
+connection.query('SELECT * FROM users'), function(err, data) {
+    if (err) throw err
+    for ( var i = 0; i <data.length; i++)   {
+    app.get('/users/' + data[i].id, function(req,res) {
+        res.send(data[i].name)
+
+    });}
+}
 
 connection.end();
